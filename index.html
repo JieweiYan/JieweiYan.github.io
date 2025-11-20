@@ -1,42 +1,91 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>我们要结婚啦 ❤</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* 自定义动画关键帧 */
-      @keyframes floatUp {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>爱，很简单</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .player {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .cover {
+      width: 220px;
+      height: 220px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .audio-container {
+      width: 100%;
+      margin-top: 20px;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+    }
+    @media (max-width: 480px) {
+      .cover {
+        width: 180px;
+        height: 180px;
       }
-      .animate-float {
-        animation: floatUp 10s linear infinite;
+      h1 {
+        font-size: 1.5em;
       }
-      @keyframes pulse-soft {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-      }
-      .animate-pulse-soft {
-        animation: pulse-soft 3s ease-in-out infinite;
-      }
-      body {
-        -webkit-font-smoothing: antialiased;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
-  }
-}
-</script>
+    }
+  </style>
 </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<body>
+  <div class="player">
+    <img 
+      src="https://yjw-music.oss-cn-hangzhou.aliyuncs.com/cover.jpg" 
+      alt="专辑封面" 
+      class="cover"
+      onerror="this.src='https://via.placeholder.com/220?text=No+Cover'"
+    />
+    <h1>爱，很简单</h1>
+    <div class="audio-container">
+      <audio 
+        controls 
+        autoplay 
+        preload="metadata"
+        onplay="console.log('音乐开始播放')"
+        onerror="alert('音频加载失败，请检查网络或文件链接')"
+      >
+        <source 
+          src="https://yjw-music.oss-cn-hangzhou.aliyuncs.com/%E7%88%B1%EF%BC%8C%E5%BE%88%E7%AE%80%E5%8D%95.mp3" 
+          type="audio/mpeg"
+        >
+        您的浏览器不支持音频播放。
+      </audio>
+    </div>
+  </div>
+</body>
 </html>
